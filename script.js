@@ -15,7 +15,7 @@ async function cargarJuegos() {
   try {
     const res = await fetch("https://raw.githubusercontent.com/miguelmiguelmiguelmiguelmiguel/Mis-videojuegos/refs/heads/main/juegos.json");
     const misJuegos = await res.json();
-    const seleccion = obtenerJuegosAleatorios(misJuegos, 3);
+    const seleccion = obtenerJuegosAleatorios(misJuegos, 4);
     contenedor.innerHTML = "";
 
     for (const juego of seleccion) {
