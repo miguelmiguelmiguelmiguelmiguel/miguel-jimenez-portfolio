@@ -49,7 +49,10 @@ section {
     position: relative;
     z-index: 1;
 }
-
+.hero-content img{
+    width: 25vw;
+    display: flex;
+}
 #hero h1 {
     font-size: 3rem;
     margin-bottom: 15px;
