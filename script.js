@@ -1,3 +1,18 @@
+//-------------BOTÓN VER MÁS
+
+
+const texto = document.getElementById("texto");
+const boton = document.getElementById("desplegable");
+
+boton.addEventListener("click", () => {
+  texto.classList.toggle("expandido");
+  boton.textContent = texto.classList.contains("expandido") ? "Ver menos" : "Ver más";
+});
+
+
+//-------------MOSTRAR JUEGOS
+
+
 const apiKey = "5f293e60061a4ddda10338c50c1d61e6";
 const contenedor = document.getElementById("juegos");
 
