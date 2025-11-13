@@ -13,7 +13,7 @@ boton.addEventListener("click", () => {
 //-------------MOSTRAR JUEGOS
 
 
-const apiKey = "5f293e60061a4ddda10338c50c1d61e6-";
+const apiKey = "5f293e60061a4ddda10338c50c1d61e6";
 const contenedor = document.getElementById("juegos");
 
 function obtenerJuegosAleatorios(lista, cantidad) {
