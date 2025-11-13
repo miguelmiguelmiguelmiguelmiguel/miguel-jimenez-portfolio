@@ -94,21 +94,22 @@ nav li a:hover {
     transition: max-height 1s ease;
 }
 #desplegable{
+    font-size: large;
     width: 25%;
     display: block;
     margin:0 auto;
-    background: none;
+    background: #333;
     border: 1px solid #333;
-    color: #999999;
     padding: 2%;
     border-radius: 6px;
-    cursor: pointer;
     transition: all 0.5s ease;
 }
 #desplegable:hover{
-    width: 30%;
-    background: #333;
+    width: 33%;
+    border-radius: 12px;
+    background: #333333af;
     color: #fff;
+    letter-spacing: 3px;
 }
 /* SECCIÓN HABILIDADES + PROYECTOS */
 #projects-section{
@@ -118,24 +119,26 @@ nav li a:hover {
     gap: 40px;
     padding: 80px 20px;
 }
-
 /* PROYECTOS */
 .projects-side{
     flex: 4;
 }
 .projects-side h2{
     font-size: 250%;
-    text-align: left;
+    text-align: center;
     text-decoration: underline;
 }
-/* GRID DE PROYECTOS */
+.projects-side p{
+    font-size: 110%;
+    margin: 0 15%;
+}
 #proyectos{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
     gap: 3%;
 }
 .project-card{
     background: rgba(31,31,31,0.9);
+    width: 50%;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.4);
