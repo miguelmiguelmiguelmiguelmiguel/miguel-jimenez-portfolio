@@ -93,7 +93,7 @@ nav li a:hover {
     overflow: hidden;
     transition: max-height 1s ease;
 }
-#desplegable{
+#boton{
     font-size: large;
     width: 25%;
     display: block;
@@ -104,7 +104,7 @@ nav li a:hover {
     border-radius: 6px;
     transition: all 0.5s ease;
 }
-#desplegable:hover{
+#boton:hover{
     width: 33%;
     border-radius: 12px;
     background: #333333af;

@@ -167,6 +167,11 @@ nav li a:hover {
     margin-bottom: 30px;
     color: #1e90ff;
 }
+#mis-juegos img{
+    width: 30%;
+    float: left;
+    margin-right: 1%;
+}
 /* GRID DE TARJETAS */
 .juegos-grid{
     display: grid;
