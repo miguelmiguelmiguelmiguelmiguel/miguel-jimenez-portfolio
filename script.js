@@ -1,6 +1,4 @@
 //-------------BOTÓN VER MÁS
-
-
 const texto = document.getElementById("texto");
 const boton = document.getElementById("vermas");
 
@@ -9,12 +7,9 @@ boton.addEventListener("click", () => {
   boton.textContent = texto.classList.contains("expandido") ? "Ver menos" : "Ver más";
 });
 
-
 //-------------MOSTRAR JUEGOS
-
-
 const apiKey = "86b39a7f5a2a4bdea8db0ecd038562bc";
-const contenedor = document.getElementById("juegos");
+const contenedores = document.querySelectorAll(".juegos");
 
 function obtenerJuegosAleatorios(lista, cantidad) {
   const copia = [...lista];
@@ -26,7 +21,7 @@ function obtenerJuegosAleatorios(lista, cantidad) {
   return seleccion;
 }
 
-async function cargarJuegos() {
+async function cargarJuegos(contenedor) {
   try {
     const res = await fetch("https://raw.githubusercontent.com/miguelmiguelmiguelmiguelmiguel/Mis-videojuegos/refs/heads/main/juegos.json");
     const misJuegos = await res.json();
@@ -35,11 +30,9 @@ async function cargarJuegos() {
 
     for (const juego of seleccion) {
       try {
-        // Fetch a RAWG usando el nombre del juego
         const apiRes = await fetch(`https://api.rawg.io/api/games?key=${apiKey}&search=${encodeURIComponent(juego.nombre)}`);
         const data = await apiRes.json();
         const info = data.results[0];
-
         const imagen = info ? info.background_image : "imagenes/no-image.jpg";
 
         const card = document.createElement("div");
@@ -62,4 +55,5 @@ async function cargarJuegos() {
   }
 }
 
-cargarJuegos();
+// Ejecutar la carga en todos los contenedores de la página
+contenedores.forEach(cargarJuegos);
