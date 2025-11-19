@@ -1,59 +1,63 @@
-//-------------BOTÓN VER MÁS
-const texto = document.getElementById("texto");
-const boton = document.getElementById("vermas");
+document.addEventListener("DOMContentLoaded", () => {
+  //-------------BOTÓN VER MÁS
+  const texto = document.getElementById("texto");
+  const boton = document.getElementById("vermas"); // solo existe en "sobre mi"
 
-boton.addEventListener("click", () => {
-  texto.classList.toggle("expandido");
-  boton.textContent = texto.classList.contains("expandido") ? "Ver menos" : "Ver más";
-});
-
-//-------------MOSTRAR JUEGOS
-const apiKey = "86b39a7f5a2a4bdea8db0ecd038562bc";
-const contenedores = document.querySelectorAll(".juegos");
-
-function obtenerJuegosAleatorios(lista, cantidad) {
-  const copia = [...lista];
-  const seleccion = [];
-  while (seleccion.length < cantidad && copia.length > 0) {
-    const i = Math.floor(Math.random() * copia.length);
-    seleccion.push(copia.splice(i, 1)[0]);
+  if (boton) {
+    boton.addEventListener("click", () => {
+      texto.classList.toggle("expandido");
+      boton.textContent = texto.classList.contains("expandido") ? "Ver menos" : "Ver más";
+    });
   }
-  return seleccion;
-}
 
-async function cargarJuegos(contenedor) {
-  try {
-    const res = await fetch("https://raw.githubusercontent.com/miguelmiguelmiguelmiguelmiguel/Mis-videojuegos/refs/heads/main/juegos.json");
-    const misJuegos = await res.json();
-    const seleccion = obtenerJuegosAleatorios(misJuegos, 4);
-    contenedor.innerHTML = "";
+  //-------------MOSTRAR JUEGOS
+  const apiKey = "86b39a7f5a2a4bdea8db0ecd038562bc"; // sin guion al final
+  const contenedores = document.querySelectorAll(".juegos-grid");
 
-    for (const juego of seleccion) {
-      try {
-        const apiRes = await fetch(`https://api.rawg.io/api/games?key=${apiKey}&search=${encodeURIComponent(juego.nombre)}`);
-        const data = await apiRes.json();
-        const info = data.results[0];
-        const imagen = info ? info.background_image : "imagenes/no-image.jpg";
-
-        const card = document.createElement("div");
-        card.classList.add("juego-card");
-        card.innerHTML = `
-          <img src="${imagen}" alt="${juego.nombre}">
-          <h3>${juego.nombre}</h3>
-          <p>${juego.comentario}</p>
-          <span class="nota">⭐ ${juego.nota}</span>
-        `;
-        contenedor.appendChild(card);
-      } catch (error) {
-        console.error("Error cargando juego desde RAWG:", juego.nombre, error);
-      }
+  function obtenerJuegosAleatorios(lista, cantidad) {
+    const copia = [...lista];
+    const seleccion = [];
+    while (seleccion.length < cantidad && copia.length > 0) {
+      const i = Math.floor(Math.random() * copia.length);
+      seleccion.push(copia.splice(i, 1)[0]);
     }
-
-  } catch (error) {
-    console.error("Error al cargar los juegos desde JSON:", error);
-    contenedor.innerHTML = "<p>No se pudieron cargar los juegos.</p>";
+    return seleccion;
   }
-}
 
-// Ejecutar la carga en todos los contenedores de la página
-contenedores.forEach(cargarJuegos);
+  async function cargarJuegos(contenedor) {
+    try {
+      const res = await fetch("https://raw.githubusercontent.com/miguelmiguelmiguelmiguelmiguel/Mis-videojuegos/refs/heads/main/juegos.json");
+      const misJuegos = await res.json();
+      const seleccion = obtenerJuegosAleatorios(misJuegos, 4);
+      contenedor.innerHTML = "";
+
+      for (const juego of seleccion) {
+        try {
+          const apiRes = await fetch(`https://api.rawg.io/api/games?key=${apiKey}&search=${encodeURIComponent(juego.nombre)}`);
+          const data = await apiRes.json();
+          const info = data.results[0];
+          const imagen = info ? info.background_image : "imagenes/no-image.jpg";
+
+          const card = document.createElement("div");
+          card.classList.add("juego-card");
+          card.innerHTML = `
+            <img src="${imagen}" alt="${juego.nombre}">
+            <h3>${juego.nombre}</h3>
+            <p>${juego.comentario}</p>
+            <span class="nota">⭐ ${juego.nota}</span>
+          `;
+          contenedor.appendChild(card);
+        } catch (error) {
+          console.error("Error cargando juego desde RAWG:", juego.nombre, error);
+        }
+      }
+
+    } catch (error) {
+      console.error("Error al cargar los juegos desde JSON:", error);
+      contenedor.innerHTML = "<p>No se pudieron cargar los juegos.</p>";
+    }
+  }
+
+  // Ejecutar la carga en todos los contenedores encontrados
+  contenedores.forEach(cargarJuegos);
+});
