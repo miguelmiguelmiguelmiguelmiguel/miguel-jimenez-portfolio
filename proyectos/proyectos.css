@@ -104,6 +104,8 @@ nav li a:hover {
 }
 
 .project-card {
+    display: flex;
+    flex-direction: column;
     background: rgba(31, 31, 31, 0.9);
     border-radius: 12px;
     overflow: hidden;
@@ -123,34 +125,76 @@ nav li a:hover {
 }
 
 .project-card h3 {
-    font-size: 1.5rem;
+
     color: #1e90ff;
     margin: 15px 0 10px;
 }
 
 .project-card p {
     padding: 0 15px 20px;
-    font-size: 0.95rem;
     opacity: 0.9;
 }
 
 .btn {
+    margin-top: auto;
     display: inline-block;
-    margin-bottom: 20px;
-    padding: 8px 20px;
+    background: #111;
     color: #fff;
-    background: #1e90ff;
+    padding: 14px 24px;
     border: none;
     border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
 }
 
 .btn:hover {
-    background: #0d6efd;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    background: #222;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
+/* CONTACTO */
+.card{
+    border: 1.5 solid black;
+    background-color: #c3c3c3d6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    gap: 20px;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+}
+p{
+    text-align: center;
+}
+/* Contenedor base */
+.social{
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+.social img{
+    width: 100%;
+}
+.social:hover{
+    transform: scale(1.5);
+    border-radius: 15px;
+}
+/* colores */
+.github:hover{ background: linear-gradient(45deg, #333333, #6e5494, #000000); }
+.instagram:hover{ background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf); }
+.linkedin:hover{ background: linear-gradient(45deg, #0077B5, #00A0DC, #005983); }
+.mail:hover{ background: linear-gradient(45deg, #D44638, #EA4335, #FF6D00); }
+.tiktok:hover{ background: linear-gradient(45deg, #57f4ff, #EE1D52, #010101); }
+.twitter:hover{ background: linear-gradient(45deg, #1DA1F2, #0d95e8, #004570); }
+.youtube:hover{ background: linear-gradient(45deg, #FF0000, #CC0000, #990000); }
 /* RESPONSIVE */
 @media (max-width: 768px) {
     #hero h1 {
@@ -160,7 +204,9 @@ nav li a:hover {
     #hero p {
         font-size: 1rem;
     }
-
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
     .project-card img {
         height: 180px;
     }

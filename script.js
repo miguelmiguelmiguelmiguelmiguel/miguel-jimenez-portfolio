@@ -2,7 +2,7 @@
 
 
 const texto = document.getElementById("texto");
-const boton = document.getElementById("desplegable");
+const boton = document.getElementById("vermas");
 
 boton.addEventListener("click", () => {
   texto.classList.toggle("expandido");

@@ -60,31 +60,27 @@ section{
     margin: 0 auto;
 }
 /* NAVEGACIÓN */
-nav {
+nav{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
-nav ul {
+nav ul{
     list-style: none;
     display: flex;
     gap: 200px;
 }
-
-nav li a {
+nav li a{
     color: #fff;
     text-decoration: none;
     font-weight: bold;
     padding: 5px 10px;
     transition: all 0.5s;
 }
-
-nav li a:hover {
+nav li a:hover{
     color: #1e90ff;
 }
-
-
 /* SOBRE MÍ */
 #miguel{
     margin: 0 15%;
@@ -98,21 +94,19 @@ nav li a:hover {
 #texto.expandido{
     max-height: 1000px;
 }
-#desplegable{
+#vermas{
     width: 25%;
     display: block;
     margin:0 auto;
-    background: none;
-    border: 1px solid #333;
+    background-color: #6a0000;
     color: #999999;
     padding: 2%;
-    border-radius: 6px;
     cursor: pointer;
     transition: all 0.5s ease;
 }
-#desplegable:hover{
-    width: 30%;
-    background: #333;
+#vermas:hover{
+    width: 26%;
+    background-color: #6a0000a0;
     color: #fff;
 }
 /* HABILIDADES */
@@ -167,10 +161,11 @@ nav li a:hover {
     margin-bottom: 30px;
     color: #1e90ff;
 }
-#mis-juegos img{
+#dosmilseis{
     width: 30%;
     float: left;
-    margin-right: 1%;
+    margin-right: 2%;
+    margin-bottom: 1%;
 }
 /* GRID DE TARJETAS */
 .juegos-grid{
@@ -291,13 +286,8 @@ p{
         position: static;
         width: 75%;
     }
-
-    .projects-side h2 {
-        text-align: center;
-    }
-    #proyectos{
-        display: grid;
-        grid-template-columns: repeat(1 ,1fr);
-        gap: 20px;
+    .capacidades{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10%;
     }
 }
